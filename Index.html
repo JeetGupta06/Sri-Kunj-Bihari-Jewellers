@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kunj Vihari Jewellers</title>
+  <style>
+    :root{
+      --violet:#3b0b57; /* dark purple/violet */
+      --muted:#f7f5fb;
+      --card-bg:#ffffff;
+      --glass: rgba(255,255,255,0.6);
+      --accent:#8b5cf6;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial, sans-serif;background:linear-gradient(180deg,var(--muted),#fff);color:#222}
+
+    /* Header */
+    header{background:var(--violet);color:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:30}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#4c1d95);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;box-shadow:0 6px 18px rgba(59,11,87,0.4)}
+    .brand h1{font-size:20px;margin:0}
+    .brand p{margin:0;font-size:12px;opacity:0.9}
+    nav a{color:#f7f5fb;text-decoration:none;margin-left:16px;font-weight:600}
+
+    /* Hero */
+    .hero{padding:28px 24px;display:flex;gap:28px;align-items:center}
+    .hero .intro{max-width:720px}
+    .hero h2{margin:0 0 8px 0}
+    .hero p{margin:0;color:#3b3b3b}
+
+    /* Page layout */
+    main{padding:8px 18px 120px}
+    section.section-title{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+    section h3{margin:8px 0}
+
+    /* Each category is a horizontal carousel */
+    .carousel-wrap{margin:14px 0}
+    .carousel{display:flex;gap:12px;overflow-x:auto;padding:12px 8px;scroll-behavior:smooth}
+    .carousel::-webkit-scrollbar{height:10px}
+    .carousel::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.15);border-radius:8px}
+
+    .card{min-width:220px;max-width:260px;background:var(--card-bg);border-radius:12px;padding:12px;box-shadow:0 6px 18px rgba(16,24,40,0.06);flex:0 0 auto}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:8px;background:#eee}
+    .card h4{margin:8px 0 6px 0;font-size:16px}
+    .meta{display:flex;justify-content:space-between;font-size:13px;color:#444;margin-bottom:8px}
+    .price-row{display:flex;align-items:center;gap:8px;margin-top:6px}
+    .calc-btn{padding:6px 8px;border-radius:8px;border:0;background:var(--violet);color:#fff;font-weight:600;cursor:pointer}
+
+    /* sticky quick filters */
+    .filters{display:flex;gap:8px;align-items:center}
+    .chip{background:rgba(255,255,255,0.06);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.06);font-weight:600}
+
+    /* Sections below */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+    .placeholder{height:150px;border-radius:10px;background:linear-gradient(90deg,#f4f4f8,#fff);display:flex;align-items:center;justify-content:center;color:#888}
+
+    /* About / Contact / Reviews */
+    .card-large{padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff, #fbfbff);box-shadow:0 6px 18px rgba(59,11,87,0.06)}
+    form input, form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;margin-bottom:8px}
+    form button{padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
+
+    /* Footer */
+    footer{padding:18px 24px;text-align:center;color:#555}
+
+    /* Responsive */
+    @media (max-width:720px){.hero{flex-direction:column;align-items:flex-start}.logo{width:48px;height:48px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">KB</div>
+      <div>
+        <h1>Sri Kunj Bihari Jewellers</h1>
+        <p>Trusted since 1995 • Fine Gold & Diamond Jewellery</p>
+      </div>
+    </div>
+    <nav class="filters">
+      <span class="chip">Home</span>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="intro">
+        <h2>Elegant pieces. Trusted craftsmanship.</h2>
+        <p>Browse our collections — rings, necklaces, earrings, bangles and more. Each item lists weight and current rate in INR. Click <strong>Calculate</strong> to view the approximate total price.</p>
+      </div>
+    </section>
+
+    <!-- Category: Necklaces -->
+    <section>
+      <div class="section-title">
+        <h3>Necklaces</h3>
+        <small>Scroll horizontally to view more</small>
+      </div>
+      <div class="carousel-wrap">
+        <div class="carousel" id="necklace-carousel">
+          <!-- Card template: replace image src placeholders with your images -->
+          <div class="card">
+            <img src="/assets/images/necklace1.jpg" alt="Necklace 1">
+            <h4>Traditional Gold Necklace</h4>
+            <div class="meta"><span>Weight: <strong class="wt">22.5</strong> g</span><span>Rate: <strong class="rate">5600</strong> INR/g</span></div>
+            <div class="price-row"><button class="calc-btn" onclick="calcPrice(this)">Calculate</button><div class="total" style="margin-left:auto;font-weight:700">—</div></div>
+          </div>
+
+          <div class="card">
+            <img src="/assets/images/necklace2.jpg" alt="Necklace 2">
+            <h4>Contemporary Pendant Set</h4>
+            <div class="meta"><span>Weight: <strong class="wt">8.2</strong> g</span><span>Rate: <strong class="rate">5600</strong> INR/g</span></div>
+            <div class="price-row"><button class="calc-btn" onclick="calcPrice(this)">Calculate</button><div class="total" style="margin-left:auto;font-weight:700">—</div></div>
+          </div>
+
+          <div class="card">
+            <img src="/assets/images/necklace3.jpg" alt="Necklace 3">
+            <h4>Antique Haram</h4>
+            <div class="meta"><span>Weight: <strong class="wt">40.0</strong> g</span><span>Rate: <strong class="rate">5600</strong> INR/g</span></div>
+            <div class="price-row"><button class="calc-btn" onclick="calcPrice(this)">Calculate</button><div class="total" style="margin-left:auto;font-weight:700">—</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category: Rings -->
+    <section>
+      <div class="section-title">
+        <h3>Rings</h3>
+        <small>Fine & Diamond Rings</small>
+      </div>
+      <div class="carousel-wrap">
+        <div class="carousel" id="rings-carousel">
+          <div class="card">
+            <img src="/assets/images/ring1.jpg" alt="Ring 1">
+            <h4>Solitaire Diamond Ring</h4>
+            <div class="meta"><span>Weight: <strong class="wt">3.6</strong> g</span><span>Rate: <strong class="rate">8500</strong> INR/g</span></div>
+            <div class="price-row"><button class="calc-btn" onclick="calcPrice(this)">Calculate</button><div class="total" style="margin-left:auto;font-weight:700">—</div></div>
+          </div>
+
+          <div class="card">
+            <img src="/assets/images/ring2.jpg" alt="Ring 2">
+            <h4>Gold Band</h4>
+            <div class="meta"><span>Weight: <strong class="wt">5.1</strong> g</span><span>Rate: <strong class="rate">5600</strong> INR/g</span></div>
+            <div class="price-row"><button class="calc-btn" onclick="calcPrice(this)">Calculate</button><div class="total" style="margin-left:auto;font-weight:700">—</div></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Category: Earrings -->
+    <section>
+      <div class="section-title">
+        <h3>Earrings</h3>
+        <small>Studs & Danglers</small>
+      </div>
+      <div class="carousel-wrap">
+        <div class="carousel" id="earrings-carousel">
+          <div class="card">
+            <img src="/assets/images/earring1.jpg" alt="Earring 1">
+            <h4>Gold Studs</h4>
+            <div class="meta"><span>Weight: <strong class="wt">2.2</strong> g</span><span>Rate: <strong class="rate">5600</strong> INR/g</span></div>
+            <div class="price-row"><button class="calc-btn" onclick="calcPrice(this)">Calculate</button><div class="total" style="margin-left:auto;font-weight:700">—</div></div>
+          </div>
+
+          <div class="card">
+            <img src="/assets/images/earring2.jpg" alt="Earring 2">
+            <h4>Diamond Drop Earrings</h4>
+            <div class="meta"><span>Weight: <strong class="wt">6.0</strong> g</span><span>Rate: <strong class="rate">8500</strong> INR/g</span></div>
+            <div class="price-row"><button class="calc-btn" onclick="calcPrice(this)">Calculate</button><div class="total" style="margin-left:auto;font-weight:700">—</div></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery / Photos -->
+    <section id="gallery">
+      <div class="section-title"><h3>Photo Gallery</h3><small>Images placeholders below — replace with your photos (folder: /assets/images/)</small></div>
+      <div class="gallery">
+        <div class="placeholder">/assets/images/necklace1.jpg</div>
+        <div class="placeholder">/assets/images/ring1.jpg</div>
+        <div class="placeholder">/assets/images/earring1.jpg</div>
+        <div class="placeholder">/assets/images/bangle1.jpg</div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" style="margin-top:18px">
+      <div class="section-title"><h3>About Us</h3></div>
+      <div class="card-large">
+        <p><strong>Kunj Vihari Jewellers</strong> is a family-owned jewellery house crafting high-quality gold and diamond jewellery since 1995. We specialise in traditional and contemporary designs with certified gemstones and transparent pricing. Our showroom offers custom design services, lifetime polishing and buy-back options.</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="margin-top:18px">
+      <div class="section-title"><h3>Contact Us</h3></div>
+      <div class="card-large">
+        <form id="contact-form">
+          <input type="text" id="name" placeholder="Your name" required>
+          <input type="email" id="email" placeholder="Your email" required>
+          <input type="text" id="phone" placeholder="Phone / WhatsApp">
+          <textarea id="message" rows="4" placeholder="Your message / enquiry"></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+        <p style="margin-top:8px;color:#666;font-size:14px">Showroom: 12 Silver Street, (Example), City • Phone: +91 98765 43210</p>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" style="margin-top:18px">
+      <div class="section-title"><h3>Reviews</h3></div>
+      <div class="card-large">
+        <div id="reviews-list">
+          <p><strong>Ravi K.</strong> — "Beautiful craftsmanship!"</p>
+          <p><strong>Meera S.</strong> — "Excellent service and fair pricing."</p>
+        </div>
+        <hr>
+        <form id="review-form">
+          <input type="text" id="rname" placeholder="Your name">
+          <textarea id="rtext" rows="3" placeholder="Your review"></textarea>
+          <button type="submit">Add Review</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="year"></span> Kunj Vihari Jewellers • All prices indicative and exclude making charges & taxes.
+  </footer>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Price calculation: weight * rate
+    function calcPrice(btn){
+      const card = btn.closest('.card');
+      const wt = parseFloat(card.querySelector('.wt').textContent)||0;
+      const rate = parseFloat(card.querySelector('.rate').textContent)||0;
+      const total = wt * rate;
+      const totalEl = card.querySelector('.total');
+      totalEl.textContent = '₹ ' + numberWithCommas(total.toFixed(2));
+    }
+    function numberWithCommas(x){return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")}
+
+    // Contact form submit (demo - prevents real submission)
+    document.getElementById('contact-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thanks! Your message has been received. We will contact you soon.');
+      this.reset();
+    });
+
+    // Review form
+    document.getElementById('review-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('rname').value || 'Anonymous';
+      const txt = document.getElementById('rtext').value || '';
+      if(!txt.trim()) return alert('Please write a review first.');
+      const node = document.createElement('p');
+      node.innerHTML = '<strong>'+escapeHtml(name)+'</strong> — "'+escapeHtml(txt)+'"';
+      document.getElementById('reviews-list').prepend(node);
+      this.reset();
+    });
+
+    function escapeHtml(s){return s.replace(/[&<>\"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":"&#39;"}[c]||c})}
+
+    // small enhancement: allow left/right wheel to scroll carousels when hovered
+    document.querySelectorAll('.carousel').forEach(car=>{
+      car.addEventListener('wheel', (e)=>{
+        if(Math.abs(e.deltaX) < Math.abs(e.deltaY)){
+          e.preventDefault();
+          car.scrollLeft += e.deltaY;
+        }
+      })
+    });
+  </script>
+</body>
+</html>
